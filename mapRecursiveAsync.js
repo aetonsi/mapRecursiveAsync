@@ -11,12 +11,12 @@ export const mapRecursiveAsync = async (
 ) => (await (
   async function worker(something, keyPath) {
     let result;
-    if (Array.isArray(something)) { // recurse
+    if (Array.isArray(something) && something.length > 0) { // recurse
       result = [];
       for (let i = 0; i < something.length; i++) {
         result[i] = await worker(something[i], [...keyPath, i]);
       }
-    } else if (isObject(something)) { // recurse
+    } else if (isObject(something) && Object.keys(something).length > 0) { // recurse
       result = {};
       for (let k in something) {
         result[k] = await worker(something[k], [...keyPath, k]);
