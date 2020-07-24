@@ -1,7 +1,8 @@
 /**
  *
- * @param {Object} object
+ * @param {*} object
  * @param {AsyncFunction(value, key, object, keyPath)} callback
+ * @param {Function(object)} [isObject]
  * @returns AsyncFunction
  */
 export const mapRecursiveAsync = async (
